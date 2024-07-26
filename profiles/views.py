@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import TeacherProfileSerializer, SubjectSerializer
 from .models import TeacherProfile, Subject
 # Create your views here.
@@ -7,6 +8,7 @@ from .models import TeacherProfile, Subject
 class TeacherProfileViewset(ModelViewSet):
     queryset = TeacherProfile.objects.all()
     serializer_class = TeacherProfileSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
     
 
 class SubjectViewset(ReadOnlyModelViewSet):

@@ -7,6 +7,7 @@ class TeacherProfileSerializer (serializers.ModelSerializer):
     class Meta:
         model = TeacherProfile
         fields = '__all__'
+        read_only_fields = ["user"]
 
 class SubjectSerializer (serializers.ModelSerializer):
     available_teachers = serializers.HyperlinkedRelatedField(
